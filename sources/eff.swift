@@ -94,7 +94,7 @@ public func map<A, B>(_ f: @escaping (A) -> B) -> (Eff<A>) -> Eff<B> {
 // Interpret & Run
 // -----------------------------------------------------------------------------
 
-public typealias Handler = (Any) -> (((Any) -> Void) -> Void)?
+public typealias Handler = (Any) -> ((@escaping (Any) -> Void) -> Void)?
 
 public func run<A>(_ handlers: [Handler]) -> (@escaping (A) -> Void) -> (Eff<A>) -> Void {
 	func interpret<A>(_ index: Int, _ callback: @escaping (A) -> Void) -> (Eff<A>) -> Void {
